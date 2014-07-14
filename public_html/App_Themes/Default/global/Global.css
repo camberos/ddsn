@@ -1,0 +1,18 @@
+/* ############################################################################
+   ##
+   ##  Global Website Stylesheet
+   ##
+   ######################################################################### */
+
+@import url('../screen/MenuMain.css');
+@import url('../screen/MenuSub.css');
+@import url('../screen/DefaultHtmlTags.css');
+@import url('../screen/DefaultForms.css');
+@import url('../screen/DefaultTables.css');
+@import url('../screen/DefaultContentClasses.css');
+@import url('../screen/DefaultPageLayout.css');
+@import url('../screen/DefaultPageElements.css');
+
+/* Global modules */
+
+@import url('../_modules/calendar.css');

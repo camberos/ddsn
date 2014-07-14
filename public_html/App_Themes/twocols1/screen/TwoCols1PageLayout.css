@@ -1,0 +1,186 @@
+@import url('../../Default/global/Global.css');
+
+/* ############################################################################
+   ## 
+   ##  TwoCols1
+   ##
+   ############################################################################ 
+    
+   | Header                               |
+   |______________________________________|
+   |          | TrailNav    PageFunctions |
+   |          |___________________________|
+   |          |                           |
+   | Tertiary | Primary                   |
+   |          |                           |
+   |          |___________________________|
+   |          | Secondary                 |
+   |          |___________________________|
+   |          | PageFunctions             |
+   |__________|___________________________|
+   |                                      |
+   | Footer                               |
+   
+   <Align>
+       <Template>
+           <AccessibilityToolbar />
+           <Header />
+           <Content>
+               <Page>
+                   <TrailNav />
+                   <PageFunctionsTop />
+                   <PageContent>
+                       <Primary />
+                       <Secondary />
+                   </PageContent>
+                   <PageFunctionsBottom />
+               </Page>
+               <Tertiary />
+           </Content>
+           <Footer />
+       </Template>
+   </Align>
+*/
+
+/* ####################################
+   Custom design options. 
+   
+   ADD RULES HERE. 
+
+   - Note that certain rules are overridden by the fixed design elements below.
+   - DO NOT use padding, margins, borders on #Primary, #Secondary, #Tertiary,
+     in this section. See notes in the next section if it's absolutely
+     necessary to use these options on outer containers.
+   ################################# */
+
+#Page {
+    padding-bottom: 2em;
+}
+#PageInner {
+}
+
+    #Page #PageContent {
+    }
+    #Page #PageContentInner {
+        padding-right: 70px;
+    }
+    
+        #Page #PageContent #Primary {
+        }
+        #Page #PageContent #PrimaryInner {
+        }
+
+            #Page #PageContent #Primary #PageBody {
+            }
+            
+            #Page #PageContent #Primary #SubContainers {
+            }
+
+            #Page #PageContent #Primary #SubArticles {
+            }
+
+        #Page #PageContent #Secondary {
+        }
+        #Page #PageContent #SecondaryInner {
+        }
+
+            #Page #PageContent #Secondary #SecondaryContent {
+                margin: 1em 0;
+                padding: 1em 0;
+                
+                border-top: #e0e0e0 1px solid;
+            }
+
+#TrailNav {
+    display: block;
+    padding: 0.75em 0;
+    border-bottom: #e0e0e0 1px solid;
+    margin-right: 72px;
+    margin-bottom: 1.5em;
+}
+* html #TrailNav {
+    width: 65%;
+}
+
+.Section1_portfolio #TrailNav {
+    padding-bottom: 0.85em;
+    width: 100%;
+}
+
+/* ####################################
+   Column widths. 
+   
+   DON'T ADD RULES HERE. ONLY MODIFY VALUES.
+   
+   Avoid use of padding, margins, borders on #Primary, #Secondary, #Tertiary,
+   as this will affect the column widths. Generally it's easier to put these
+   settings on the "Inner" elements (in which case, specify them in the
+   section above). However some designs require settings on the outer elements.
+   If padding, margins, borders are necessary on the outer containers, make 
+   sure that widths are re-calculated properly. You should ONLY need to modify
+   the "width: #px;" attributes in these cases. (Borders are usually set in 
+   pixel sizes and by nature, "%" or "em" widths are not compatible with the
+   approach used in these stylesheets.) Other settings (e.g. padding, margin)
+   should be equal to the full width of the column.
+   ################################# */
+
+/* Left column width */
+
+    #ContentInner {            
+        padding-left: 300px;
+    }
+
+    #Tertiary {
+        width: 300px;               /* LC width minus #Tertiary padding/margin/border */
+        left: -300px;
+    }
+    
+/* Full page width (only for fixed width designs) */
+
+    * html #Tertiary {
+        /* IE6 Only */
+        margin-left: -970px;        /* Affected by #Template{width}. Exact pixel width of #Template (instead of 100%). Wow! Fixes the intermittent jumping #Tertiary div problem in IE6. Does IE6 have maths bugs with percentage width margins? Probably! Has to use star hack because other browsers don't like the fixed pixels. Could this be fixed with a different approach on a div further up the hierarchy? No solution for a fluid width design yet, the div still jumps approximately 1 in 20 loads, or worse in some designs. */
+    }
+
+/* Only change these where the design is fixed width AND margin/padding/borders are required on these elements. Avoid changes if possible. Widths other than 100% remove the ability for the page to easily change to fluid width. */
+
+    #Content {
+        /* width: 100%;  */               /* Specifying a width ensures consistent page layout in IE7, IE6, FF, otherwise they all treat the page width slightly differently. */
+    }
+    #ContentInner {
+        width: 652px;               /* Affected by #Template{width}. */
+    }
+
+    #Page {
+        width: 100%;                /* Specifying a width fixes float and width issues in FF and IE6 when content does not push to 100% width. */
+    }
+
+/* ####################################
+   Fixed 2 Column Design Elements
+   
+   DON'T CHANGE.
+   
+   ################################# */
+
+#Content {
+    position: relative; 
+    float: left;                    /* A float or a width is required to fix invisibility problems in IE6, but good practise in any case. */
+}
+#ContentInner {
+    min-width: 1px;                 /* Fixes sideways floating problem in IE7. Don't use width, this causes IE6 problems. */
+}
+
+    #Page {
+        position: relative;
+        float: left;
+    }
+
+    #Tertiary {
+        position: relative;
+        float: left;
+        margin-left: -100%;         /* The holy grail trick. And the cause of most of our headaches. */
+    }
+    * html #Tertiary {
+        /* IE6 Only */
+        left: 0;                    /* The holy grail hack/fix. */
+    }

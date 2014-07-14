@@ -1,0 +1,518 @@
+/* ############################################################################
+   ## 
+   ##  PAGE LAYOUT
+   ##
+   ######################################################################### */
+
+/* ####################################
+   Core Template
+   ####################################
+   
+    <Align>
+        <Template>
+            <AccessibilityToolbar />
+            <Header />
+            <Content>
+                <Page>
+                    <TrailNav />
+                    <PageFunctionsTop />
+                    <PageContent>
+                        <Primary />
+                        <Secondary />
+                    </PageContent>
+                    <PageFunctionsBottom />
+                </Page>
+                <Tertiary />
+            </Content>
+            <Footer />
+        </Template>
+    </Align>
+*/
+
+#Align {
+    text-align: center;      /* Coupled with the "margin: 0 auto;" and "text-align: left;" settings in #Template (below) this is a weird but safe way to center a page in all browsers including IE where the standard doesn't work. */
+    background: #ffffff url('../images/bg_inner_orange_55.jpg') top center repeat-x;
+}
+
+#Template {
+    position: relative;
+    width: 100%;            /* Search for "#Template{width}" in CSS files to update values related to this. Default 940px. */
+    
+}
+#TemplateInner {
+}
+
+#AccessibilityToolbar {
+    position: absolute;
+    margin-top: -2em;
+    font-size: 91.7%;
+}
+
+    #AccessibilityToolbar ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+        #AccessibilityToolbar li {
+            display: inline;
+            margin-right: 1em;
+        }
+
+/* ########################################################
+   Header 
+   ######################################################## */
+
+    #Header {
+        position: relative; /* z-index doesn't work without position. */
+        float: left;
+        width: 100%;
+        height: 99px;
+        z-index: 2;         /* Important for the main menu dropdown to appear above page content in IE */
+        text-align: center;
+    }
+    #HeaderInner {
+        display: inline-block;
+        width: 952px;
+        padding-right: 18px;
+        text-align: left;
+    }
+        
+        #Header #Logo {
+            position: absolute;
+            top: 22px;
+            z-index: 2; /* Above #MainMenu */
+        }
+
+        #Header #LoginStatusShort {
+            padding: 4px 10px;
+        }
+        
+        #Header #SearchSite {
+            display: none;
+
+            position: relative;
+            float: right;
+            padding: 4px 10px;
+        }
+
+            #Header #SearchSite label {
+                color: #ffffff;
+                font-weight: bold;
+            }
+            
+            #Header #SearchSite input {
+                padding: 0;
+                margin: 0;
+            }
+
+            #Header #SearchSite .submit {
+                padding-left: 8px;
+                padding-right: 8px;
+            }
+
+            #Header #SearchSite .keywords {
+            }
+                    
+            #Header #SearchSite #AdvancedSearchLink {
+                display: none;
+            }
+
+        #Header #MainMenu {
+            position: absolute;
+            top: 46px;
+            width: 962px; /* Width + 10 - Padding to align with AnchorMenu */
+            z-index: 1;
+        }
+        #Header #MainMenuInner {
+        }
+        
+        #Header #AnchorMenu {
+            position: relative;
+            float: right;
+            margin-top: 9px;
+            z-index: 2; /* Above #MainMenu */
+        }
+        
+            #Header #AnchorMenu ul {
+                margin: 0;
+                padding: 0;
+                list-style-type: none;
+                list-style-image: none;
+            }
+
+                #Header #AnchorMenu ul li {
+                    display: inline;
+                    margin: 0;
+                    padding: 0;
+                    list-style-type: none;
+                    list-style-image: none;
+                }
+
+                #Header #AnchorMenu .homeLink {
+                }
+
+                #Header #AnchorMenu .searchLink {
+                }
+
+                #Header #AnchorMenu .extranetLink {
+                }
+
+            #Header #AnchorMenu #DDSNSites {
+            }
+
+                #Header #AnchorMenu #DDSNSites ul {
+                    display: inline;
+                }
+                            
+                #Header #AnchorMenu #DDSNSites .linksLabel {
+                    display: inline;
+                    color: #c0c0c0;
+                    font-weight: bold;
+                }
+
+                #Header #AnchorMenu #DDSNSites a {
+                    margin: 0 0 0 1em;
+                }
+                            
+                    #Header #AnchorMenu #DDSNSites a:link {
+                        color: #a8a8a8;
+                    }
+                    
+                    #Header #AnchorMenu #DDSNSites a:visited {
+                        color: #a8a8a8;
+                    }
+                    
+                    #Header #AnchorMenu #DDSNSites a:hover {
+                    }
+                    
+                    #Header #AnchorMenu #DDSNSites a:active {
+                    }
+
+                    #Header #AnchorMenu #DDSNSites a.first {
+                        padding-left: 0;
+                    }
+
+                    #Header #AnchorMenu #DDSNSites a.last {
+                        border: 0;
+                    }
+
+                #Header #AnchorMenu #DDSNSites .ddsn {
+            	    text-decoration: underline;
+			    }
+			
+			#Header #AnchorMenu #AnchorLinks {
+			    margin-top: 3px;
+			    text-align: right;
+			    text-transform: lowercase;
+			}
+
+			    #Header #AnchorMenu #AnchorLinks ul {
+                }
+
+			        #Header #AnchorMenu #AnchorLinks ul li {
+			            margin-left: 1em;
+                    }
+            			
+/* ########################################################
+   Content area
+   
+   DO NOT code CSS rules here if the site uses multiple templates. The usual
+   approach is to define the rules separately on each template to avoid
+   cascading conflicts. If there is only one template in the site or if there
+   is a VERY, VERY clear case for using the same rules on every template, 
+   rules can be coded here.
+   ######################################################## */
+
+        #Content {
+            width: 100%;
+            margin-top: -64px;
+            text-align: center;
+        }
+        * html #Content {
+            /* IE6 Only */
+            margin-top: -94px;
+        }
+        #ContentInner {
+            display: inline-block;
+            width: 934px;
+            padding-left: 18px;
+            padding-right: 18px;
+            text-align: left;        
+        }
+
+            #Page {
+            }
+            #PageInner {
+            }
+                
+                #Page #PageContent {
+                }
+                #Page #PageContentInner {
+                }
+                
+                    #Page #PageContent #Primary {
+                    }
+                    #Page #PageContent #PrimaryInner {
+                    }
+
+                    #Page #PageContent #Secondary {
+                    }
+                    #Page #PageContent #SecondaryInner {
+                    }
+            
+            #Tertiary {
+            }
+            #Tertiary #TertiaryInner {
+            }
+
+/* ########################################################
+   Footer 
+   ######################################################## */
+
+    #Footer {
+        position: relative;
+        clear: both;
+        background: #183319;
+    }
+    * html #Footer {
+        /* IE6 Only */
+        float: left;
+    }
+    #FooterInner {
+        position: relative;
+        display: inline-block;   /* Otherwise IE7 jumps the footer upwards on the home page. */
+        width: 950px;
+        padding: 14px 0 3em;
+        color: #ffffff;
+        margin: 0 auto;          /* Coupled with "text-align: left;" to re-align text to left in the page div when a parent div is centred. This allows centering of page div using the IE-safe hack. */
+        text-align: left;        /* Coupled with "margin: 0 auto;" o re-align text to left in the page div when a parent div is centred. This allows centering of page div using the IE-safe hack. */
+    }
+    
+        #FooterLogo {
+            margin-left: 26px;
+        }
+        
+        #FooterDDSNInfo {
+            padding-top: 3em;
+            margin-left: 70px;
+            font-size: 91.7%;
+        }
+
+            #FooterDDSNInfo h6 {
+                margin: 0 0 0.5em;
+                font-size: 100%;
+                border: 0;
+            }
+            
+                #FooterDDSNInfo h6 a {
+                    color: #ffffff;
+                }
+
+                #FooterDDSNInfo h6 a:hover {
+                    text-decoration: none;
+                }
+
+            #FooterDDSNInfo .infoText {
+            }
+
+                #FooterDDSNInfo .infoText a {
+                    color: #ffffff;
+                }
+
+                #FooterDDSNInfo .infoText a:hover {
+                    text-decoration: none;
+                }
+
+            #FooterDDSNInfo div ul {
+                margin: 0;
+                padding-left: 0;
+                list-style-type: none;
+                list-style-image: none;
+            }
+
+                #FooterDDSNInfo div ul li {
+                    margin-left: 0;
+                    margin-bottom: 0.75em;
+                    padding-left: 0;
+                    list-style-type: none;
+                    list-style-image: none;
+                }
+    
+            #FooterDDSNInfo p {
+                margin: 0 0 0.75em;
+            }
+                                                                
+            #FooterDDSNInfo #FooterContactInfo {
+                position: relative;
+                float: left;
+                width: 16%;
+                margin-top: 2px;
+                margin-right: 4%;
+                line-height: 200%;
+            }
+
+            #FooterDDSNInfo #FooterCoreServices {
+                position: absolute;
+                top: 56px;
+                left: 70px;
+            }
+
+                #FooterDDSNInfo #FooterCoreServices h6 {
+                    display: none;
+                }
+
+                #FooterDDSNInfo #FooterCoreServices li {
+                    float: left;
+                    margin-right: 1em;
+                    width: auto;
+                }
+
+                    #FooterDDSNInfo #FooterCoreServices li a {
+                        color: #8A988B;
+                    }
+                
+            #FooterDDSNInfo #FooterFollowUs {
+                position: relative;
+                float: left;
+                width: 10%;
+                margin-top: 0.5em;
+                margin-right: 4%;
+            }
+
+            #FooterDDSNInfo #FooterBlogs {
+                position: relative;
+                float: left;
+                width: 21%;
+                margin-top: 0.5em;
+                margin-right: 4%;
+            }
+
+                #Footer #FooterBlogs .featuredPosts {
+                }
+                
+                #Footer #FooterBlogs .featuredPosts .date {
+                    display: none;
+                }
+
+            #FooterDDSNInfo #FooterTwitter {
+                position: relative;
+                float: left;
+                width: 30%;
+                margin-top: 0.5em;
+                margin-right: 0;
+                overflow: hidden;
+            }
+
+                #FooterDDSNInfo #FooterTwitter .tweet {
+                    margin-bottom: 1em;
+                }
+
+                    #FooterDDSNInfo #FooterTwitter .tweet .title {
+                    }
+
+                    #FooterDDSNInfo #FooterTwitter .tweet .date {
+                        display: none;
+                    }
+                                        
+        #Footer #FooterMenu {
+            position: relative;
+            float: left;
+            clear: both;
+            margin-top: 2em;
+            margin-left: 70px;
+            font-size: 91.7%;
+        }
+        * html #Footer #FooterMenu {
+            /* IE6 Only */
+            margin-left: 36px;
+        }
+
+            #Footer #FooterMenu ul {
+                margin: 0;
+                padding: 0;
+                list-style: none;
+            }
+
+                #Footer #FooterMenu ul li {
+                    display: inline;
+                    padding-right: 8px;
+                }
+
+                #Footer #FooterMenu a {
+                }
+
+                    #Footer #FooterMenu a:link {
+                        color: #acd038;
+                    }
+
+                    #Footer #FooterMenu a:visited {
+                        color: #acd038;
+                    }
+
+                    #Footer #FooterMenu a:hover {
+                    }
+
+                    #Footer #FooterMenu a:active {
+                    }
+
+        #Footer #Rights {
+            position: relative;
+            float: left;
+            clear: both;
+            margin-left: 70px;
+            font-size: 91.7%;
+        }
+        * html #Footer #Rights {
+            /* IE6 Only */
+            margin-left: 36px;
+        }
+            
+            #Footer #Rights p {
+                margin: 0;
+            }
+
+        #Footer #CreditsDesign {
+            position: relative;
+            float: left;
+            clear: left;
+            margin-left: 70px;
+            font-size: 91.7%;
+        }
+        * html #Footer #CreditsDesign {
+            /* IE6 Only */
+            margin-left: 36px;
+        }
+
+            #Footer #CreditsDesign a {
+            }
+
+                #Footer #CreditsDesign a:link {
+                    color: #acd038;
+                }
+
+                #Footer #CreditsDesign a:visited {
+                    color: #acd038;
+                }
+
+                #Footer #CreditsDesign a:hover {
+                }
+
+                #Footer #CreditsDesign a:active {
+                }
+
+        #Footer #CreditsCMS {
+            position: relative;
+            float: right;
+            margin-top: -2.25em;
+            margin-right: 52px;
+        }
+        * html #Footer #CreditsCMS {
+            /* IE6 Only */
+            margin-top: 2em;
+        }
+        *:first-child+html #Footer #CreditsCMS {
+            /* IE7 Only */
+            margin-top: 2em;
+        }
+        

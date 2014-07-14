@@ -1,0 +1,124 @@
+/* ############################################################################
+   ## 
+   ##  MAIN MENU
+   ##
+   ######################################################################### */
+
+/* ####################################
+   GLOBAL - List Layout
+   ################################## */
+
+#MenuUL {
+    /* The nav object. (A <ul> in the standard platform.) */
+    position: relative; /* DON'T CHANGE - Assures nav container has proper cascading position. */
+    float: right; /* DON'T CHANGE - Makes IE and FF behave the same regarding ul dimensions. */
+    margin: 0; /* DON'T CHANGE - Removes margin around the ul for neat layout. */
+    padding: 0; /* DON'T CHANGE - Removes padding within the ul for neat layout. */
+    
+    list-style: none; /* DON'T CHANGE - Removes bullet points from list items. */
+    width: auto;
+}
+*:first-child+html #MenuUL {
+    /* IE7 Only */
+    width: 42.5em;
+    margin-right: -10px;
+}
+* html #MenuUL {
+    /* IE6 Only */
+    width: 44em;
+    margin-right: -18px;
+}
+
+#MenuUL li {
+    /* All list items within the nav object */
+    float: left; /* DON'T CHANGE - This makes the top level horizontal. */
+    margin-left: 10px;
+    font-size: 185%;
+    text-transform: lowercase;
+}
+* html #MenuUL li {
+    /* IE6 Only */
+    width: 10px; /* IE6 needs a width or the menu layout breaks. The white-space and padding options below simulate the variable width seen in other browsers but only of the text in the menu items is short enough. */
+    white-space: nowrap;
+}
+
+    #MenuUL li:hover, #MenuUL li.sfhover {
+        /* All list items within the nav object - Hover */
+        background: #484848; 
+        /* background: url('../images/arrow_flat_down.gif') 10px 6px no-repeat; */
+    }
+
+/* ####################################
+   GLOBAL - Anchors (Links)
+   ################################## */
+
+#MenuUL a {
+    /* All anchor tags within the nav object */
+    display: block; /* DON'T CHANGE - Fills the width of the li with link rollover. */
+    color: #acd038;
+    padding: 0;
+    margin: 0;
+    padding: 4px 10px 8px;
+}
+* html #MenuUL a {
+    /* IE6 Only */
+    /* All anchor tags within the nav object */
+    width: 100%; /* DON'T CHANGE - Fills the width of the li with link rollover for IE6 (display:block fix). Be careful if margin/padding/border is added. */
+}
+
+    #MenuUL a:hover {
+        /* All anchor tags within the nav object - Hover */
+    }
+
+/* ####################################
+   LEVEL 2+ - List Layout
+   ################################## */
+
+#MenuUL li ul {
+    /* Second level lists (all sub lists within list items) */
+    position: absolute; /* DON'T CHANGE - Places second level lists in the right spot. */
+    left: -10000%; /* DON'T CHANGE - Drop-down hover trick - Hide the menu off the screen. */
+    
+    margin: 0; /* DON'T CHANGE - Removes margin around the ul for neat layout. */
+    padding: 0; /* DON'T CHANGE - Removes padding within the ul for neat layout. */
+    
+    list-style: none; /* DON'T CHANGE - Removes bullet points from list items. */
+}
+
+#MenuUL li:hover ul, #MenuUL li li:hover ul, #MenuUL li.sfhover ul, #MenuUL li li.sfhover ul {
+    /* Second level lists (all sub lists within list items) - Hover over the containing li */
+    left: auto; /* DON'T CHANGE - Drop-down hover trick - Re-align the menu on the screen on rollover. */
+}
+
+#MenuUL li ul li {
+    /* Second level list items */
+    float: none; /* DON'T CHANGE - Makes second level list items vertical. */
+    margin-left: 0;
+    width: auto;
+    font-size: 87.5%;
+    background: #000000;
+}
+* html #MenuUL li ul li {
+    margin-top: -1px; /* Who knows why it jumps down a pixel? */
+    width: 140px; /* Otherwise each li is a different width. */
+    white-space: normal; /* Allows menu items to span multiple rows, overridden from first level. */
+}
+
+    #MenuUL li ul li:hover, #MenuUL li ul li.sfhover {
+        /* Second level list items - Hover */
+        background: #484848; 
+    }
+
+/* ####################################
+   LEVEL 2+ - Anchors (Links)
+   ################################## */
+
+#MenuUL li ul li a {
+    /* Second level list items - Anchor tags */
+    padding: 10px;
+    padding-right: 30px;
+}
+
+    #MenuUL li ul li a:hover {
+        /* Second level list items - Anchor tags - Hover */
+    }

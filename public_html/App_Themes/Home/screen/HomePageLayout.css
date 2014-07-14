@@ -1,0 +1,385 @@
+@import url('../../Default/global/Global.css');
+
+/* ############################################################################
+   ## 
+   ##  HOME PAGE
+   ##
+   ######################################################################### */
+
+/***
+ * Default stylesheet overrides
+ */
+ 
+#Align {
+   /* background: #006F2D url('../images/bg_home_button_01.jpg') top center repeat-x;*/
+   background: #006f2d url('../images/bg_home_button_01_top.jpg') top center no-repeat;
+}
+#Template {
+   background: url('../images/bg_home_button_01_bottom.jpg') center 660px no-repeat;
+}
+#Content {
+    margin-top: 0;
+}
+
+* html #Content {
+    /* IE6 Only */
+    margin-top: 0;
+}
+
+#Header {
+    height: 141px;
+}
+
+#Header #MainMenu {
+    top: 82px;
+}
+
+#MenuUL a {
+    padding: 10px;
+}
+
+#Header #Logo {
+    position: absolute;
+    top: 48px;
+    margin-top: 0;
+    width: 422px;
+    height: 66px;
+    background: url('../images/ddsn_logo_home.gif') no-repeat;
+}
+
+    #Header #Logo:hover {
+    }
+
+    #Header #Logo img {
+        display: none;
+    }
+
+/***
+ * Feature content
+ */
+
+#FeatureContent {
+    position: relative;
+    float: left; /* Makes FF and IE8 behave the same as IE7 & IE6 for this element. */
+    width: 100%;
+    margin-top: 0;
+    height: 245px;
+    text-align: center;
+    background: transparent;
+}
+#FeatureContentInner {
+    display: inline-block;
+    position: relative;
+    width: 934px;
+    margin-top: 21px;
+    text-align: left;
+}
+
+    #FeatureContent #WebsitesThatShine {
+        position: absolute;
+        top: 22px;
+        left: 25px;
+    }
+
+/***
+ * Home page layout
+ */
+
+#ContentInner {
+    width: 864px;
+    margin: 1em 35px 35px 35px;
+    padding-right: 0;
+}
+
+#Page {
+    color: #ffffff;
+}
+
+    #Page a {
+        /* color: #acd038; */
+        color: #ccf058;
+    }
+        
+    #Page h2 {
+        margin-top: 0.75em;
+        margin-bottom: 0.75em;
+        font-size: 200%;
+        text-transform: lowercase;
+    }
+        
+    #Page h3 {
+        margin-top: 1.75em;
+        margin-bottom: 0;
+        color: #ffffff;
+        border-bottom: #ffffff 1px dotted;
+    }
+    
+    #Page p {
+        font-size: 116.7%;
+        line-height: 135%;
+    }
+
+    #Page ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+        #Page ul li {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        
+    #Page #HomePrimary {
+    }
+
+        #Page #Panel1 {
+        }
+
+        #Page #Panel2 {
+        }
+    
+    #Page #HomeSecondary {
+    }
+
+        #Page #HomeSecondary #Panel3 {
+            position: relative;
+            float: left;
+            margin-right: 30px;
+            width: 278px;
+        }
+
+        #Page #HomeSecondary #Panel4 {
+            position: relative;
+            float: left;
+            margin-right: 30px;
+            width: 278px;
+        }
+
+        #Page #HomeSecondary #Panel5 {
+            position: relative;
+            float: left;
+            width: 247px;
+        }
+
+    #Page #HomeTertiary {
+    }
+
+        #Page #HomeTertiary #Panel6 {
+        }
+
+/***
+ * Individual Page Components
+ */
+
+        #FollowUs {
+            font-size: 116.7%;
+        }
+
+            #FollowUs ul {
+                margin-top: -0.5em;
+            }
+            
+                #FollowUs ul li {
+                    display: inline-block;
+                    width: 49%;
+                    margin-bottom: 0.5em;
+                }
+                * html #FollowUs ul li {
+                    /* IE6 Only */
+                    display: inline;
+                }
+                *:first-child+html #FollowUs ul li {
+                    /* IE7 Only */
+                    display: inline;
+                }
+            
+                #FollowUs ul li a {
+                    padding-top: 2px;
+                    padding-left: 28px;
+                }
+        
+        #LatestNews {
+        }
+
+            #LatestNews .article {
+                margin-bottom: 1.5em;
+            }
+                    
+                #LatestNews .article .title {
+                    font-size: 116.7%;
+                    margin-top: 0;
+                    margin-bottom: 0.25em;
+                    color: #ffffff;
+                    font-weight: normal;
+                    border-bottom: 0;
+                }
+        
+                #LatestNews .article .date {
+                    color: #a4d973;
+                    font-size: 91.7%;
+                    font-weight: normal;
+                }
+
+                #LatestNews .article .summary {
+                    display: none;
+                }
+        
+        #OurServices {
+            margin-top: -0.5em;
+        }
+
+            #OurServices ul {
+            }
+
+                #OurServices ul li {
+                    font-size: 125%;
+                    margin-bottom: 0.5em;
+                }
+        
+        #OurClients {
+            position: absolute;
+            margin-top: 45px;
+            width: 264px;
+        }
+
+            #OurClients img {
+                width: 111px;
+                height: 77px;
+                margin: 0 17px 17px 0;
+            }
+            
+        #FromTheBlog {
+            margin-top: 0.5em;
+        }
+        
+            #FromTheBlog .featuredPosts {
+                margin-top: -1.5em;
+            }
+        
+            #FromTheBlog .blogPost {
+                margin-bottom: 1.5em;
+                float: left;
+                width: 100%;
+            }
+
+                #FromTheBlog .blogPost .thumbnail {
+                    float: left;
+                    width: 38%;
+                }
+
+                    #FromTheBlog .blogPost .thumbnail img {
+                        width: 100%;
+                        border: 2px solid;
+                    }
+                
+                #FromTheBlog .blogPost .text {
+                    float: right;
+                    width: 58%;
+                }
+            
+                    #FromTheBlog .blogPost .text .title {
+            	        margin: 0 0 0.25em;
+                        font-size: 116.7%;
+                        font-weight: normal;
+                    }
+
+                    #FromTheBlog .blogPost .text .date {
+	                    /* color: #84B953; */
+	                    color: #a4d973;
+	                    font-size: 91.7%;
+	                    font-weight: normal;
+                    }
+
+                    #FromTheBlog .blogPost .text .summary {
+                        display: none;
+                    }
+
+/***
+ * Headings
+ */
+ 
+.h2Graphic {
+    display: inline-block;
+    width: 100%;
+    height: 24px;
+    text-indent: -10000em;
+}
+
+#h2FromTheBlog {
+    background: url('../../../images/headers/h2w/from_the_blog_mid.gif') no-repeat;
+}
+
+#h2WhoWeAre {
+    background: url('../../../images/headers/h2w/who_we_are.gif') no-repeat;
+}
+
+#h2LatestNews {
+    background: url('../../../images/headers/h2w/latest_news.gif') no-repeat;
+}
+
+#h2OurServices {
+    background: url('../../../images/headers/h2w/our_services.gif') no-repeat;
+}
+
+#h2FollowUs {
+    background: url('../../../images/headers/h2w/follow_us.gif') no-repeat;
+}
+
+#h2OurClients {
+    background: url('../../../images/headers/h2w/our_clients_light.gif') no-repeat;
+}
+
+/***
+ * Links
+ */
+ 
+.linkEmail {
+    display: inline-block;
+    min-height: 20px;
+    padding: 4px 0 0 24px;
+    background: url('../../../images/icons/email_20x20_dg.gif') no-repeat;
+}
+ 
+.linkBlogs {
+    display: inline-block;
+    min-height: 20px;
+    padding: 4px 0 0 24px;
+    background: url('../../../images/icons/blogs_20x20_dg.gif') no-repeat;
+}
+ 
+.linkRSS {
+    display: inline-block;
+    min-height: 20px;
+    padding: 4px 0 0 24px;
+    background: url('../../../images/icons/rss_20x20_dg.gif') no-repeat;
+}
+ 
+.linkFacebook {
+    display: inline-block;
+    min-height: 20px;
+    padding: 4px 0 0 24px;
+    background: url('../../../images/icons/facebook_20x20_dg.gif') no-repeat;
+}
+ 
+.linkTwitter {
+    display: inline-block;
+    min-height: 20px;
+    padding: 4px 0 0 24px;
+    background: url('../../../images/icons/twitter_20x20_dg.gif') no-repeat;
+}
+ 
+.linkFlickr {
+    display: inline-block;
+    min-height: 20px;
+    padding: 4px 0 0 24px;
+    background: url('../../../images/icons/flickr_20x20_dg.gif') no-repeat;
+}
+ 
+.linkLinkedIn {
+    display: inline-block;
+    min-height: 20px;
+    padding: 4px 0 0 24px;
+    background: url('../../../images/icons/linkedin_20x20_dg.gif') no-repeat;
+}

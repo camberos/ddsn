@@ -1,0 +1,129 @@
+@import url('../../Default/global/Global.css');
+
+/* ############################################################################
+   ## 
+   ##  OneCol1
+   ##
+   ############################################################################ 
+
+   | Header                               |
+   |______________________________________|
+   | TrailNav               PageFunctions |
+   |______________________________________|
+   |                                      |
+   | Primary                              |
+   |                                      |
+   |______________________________________|
+   | Secondary                            |
+   |______________________________________|
+   | PageFunctions                        |
+   |______________________________________|
+   |                                      |
+   | Footer                               |
+   
+   <Align>
+       <Template>
+           <AccessibilityToolbar />
+           <Header />
+           <Content>
+               <Page>
+                   <TrailNav />
+                   <PageFunctionsTop />
+                   <PageContent>
+                       <Primary />
+                       <Secondary />
+                   </PageContent>
+                   <PageFunctionsBottom />
+               </Page>
+               <Tertiary />
+           </Content>
+           <Footer />
+       </Template>
+   </Align>
+*/
+
+/* ####################################
+   Custom Design Options
+   
+   ADD RULES HERE. 
+   
+   ################################# */
+
+#Page {
+    padding-bottom: 2em;
+}
+#PageInner {
+}
+
+    #Page #PageContent {
+        margin-top: 10px;
+    }
+    #Page #PageContentInner {
+    }
+    
+        #Page #PageContent #Primary {
+        }
+        #Page #PageContent #PrimaryInner {
+        }
+
+            #Page #PageContent #Primary #PageBody {
+            }
+            
+            #Page #PageContent #Primary #SubContainers {
+            }
+
+            #Page #PageContent #Primary #SubArticles {
+            }
+
+        #Page #PageContent #Secondary {
+        }
+        #Page #PageContent #SecondaryInner {
+        }
+        
+            #Page #PageContent #Secondary #SecondaryContent {
+                margin: 1em 0;
+                padding: 1em 0;
+            }
+            
+#PageFunctionsTop {
+    top: -32px;
+    left: 70px;
+}
+* html #PageFunctionsTop {
+    margin-left: 52px;
+}
+
+#PageFunctionsBottom {
+    margin-left: 52px;
+}
+
+#PagingTop, #PagingBottom {
+    margin: 0 52px;
+}
+    
+/* ####################################
+   Fixed 1 Column Design Elements
+   
+   DON'T CHANGE.
+   
+   ################################# */
+
+#Content {
+    position: relative; 
+    float: left;                    /* A float or a width is required to fix invisibility problems in IE6, but good practise in any case. */
+    /* width: 100%;  */               /* Specifying a width ensures consistent page layout in IE7, IE6, FF, otherwise they all treat the page width slightly differently. */
+}
+#ContentInner {
+    position: relative;
+    width: 934px;               /* Affected by #Template{width}. */
+}
+* html #ContentInner {
+    /* IE6 Only */
+    /* Offset padding because of some kind of text-align glitch in IE6. */
+    padding-left: 20px;
+    padding-right: 16px;
+}
+
+#Tertiary {
+    display: none;
+}

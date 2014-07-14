@@ -1,0 +1,122 @@
+/* ############################################################################
+   ## 
+   ##  HTML TAG STYLES
+   ##
+   ######################################################################### */
+
+body {
+    margin: 0;
+    padding: 0;
+     
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 75%;
+    
+    background: #ffffff;
+}
+
+a {
+}
+
+    a:link {
+        color: #acd038;
+        text-decoration: none;
+    }
+
+    a:visited {
+        color: #acd038;
+        text-decoration: none;
+    }
+
+    a:hover {
+        color: #54a136;
+        text-decoration: underline;
+    }
+
+    a:active {
+        text-decoration: underline;
+    }
+
+p {
+    margin: 0 0 1.5em;
+}
+
+h1 {
+    margin: 0.5em 0 0.5em 0;
+    font-size: 225%;
+    font-weight: normal;
+}
+
+h2 {
+    margin: 2em 0 0.75em 0;
+    font-size: 150%;
+    font-weight: normal;
+}
+
+h3 {
+    margin: 1.5em 0 0.75em 0;
+    font-size: 125%;
+    color: #54a136;
+}
+
+h4 {
+    margin: 1.5em 0 0.75em 0;
+    font-size: 100%;
+}
+
+h5 {
+    margin: 1.5em 0 0.75em 0;
+    padding-bottom: 0.25em;
+    font-size: 100%;
+    border-bottom: 1px solid;
+}
+
+h6 {
+    font-size: 82.5%;
+    margin: 1.5em 0 0.75em 0;
+    border-bottom: #e0e0e0 1px solid;
+}
+
+ul {
+}
+
+ul li {
+}
+
+ol {
+}
+
+ol li {
+}
+
+big {
+    font-size: 115%;
+}
+
+small {
+    font-size: 83.5%;
+}
+
+hr {
+    margin: 0 0 1.25em;
+}
+
+img {
+}
+* html img {
+    /* IE6 Only */
+    /* FILTER: progid:DXImageTransform.Microsoft.Fade(Overlap=1.00,Duration=0.50); */
+}
+
+caption {
+    margin: 0 0 0.25em 0;
+    font-weight: bold;
+    text-align: left;
+}
+
+address {
+    font-style: italic;
+}
+
+pre {
+    font-size: 133.3%;
+}

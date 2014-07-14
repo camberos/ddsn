@@ -1,0 +1,84 @@
+@import url('../../Default/global/Global.css');
+
+#Align {
+    background: #ffffff;
+}
+
+#Template {
+}
+
+#Header {
+    background: #000000;
+    height: 80px;
+}
+
+#HeaderInner {
+    width: 90%;
+}
+
+#Header #Logo {
+    margin-top: 0;
+}
+
+#SearchSite, #MainMenu, #AnchorMenu, .loggedIn, .loggedOut, #LoginStatus, #Tertiary, #PageFunctionsTop {
+    display: none;
+}
+
+#FeatureContent {
+    background: url('../../Default/images/bg_home_green_50.jpg') center top repeat-x;
+    height: auto;
+    min-height: 60px;
+}
+#FeatureContentInner {
+    width: 90%;
+}
+
+    #FeatureContent #SectionHeading {
+        position: relative;
+        top: auto;
+        left: auto;
+        margin-top: 6px;
+        margin-left: 10px;
+    }
+
+    body.Section1_blogs #FeatureContent, body.Path__blogs__default #FeatureContent, body.Section1_blogs_module #FeatureContent, body.Path__blogs__post #FeatureContent, body.ParentContainer_allblogs #FeatureContent,
+    body.Section1_portfolio #FeatureContent,
+    body.ArticleContainer_projects #FeatureContent,
+    body.Section1_solutions #FeatureContent,
+    body.Section1_about #FeatureContent,
+    body.Path__contact__default #FeatureContent 
+    {
+    background: url('../../Default/images/bg_home_green_50.jpg') center top repeat-x;
+    height: auto;
+    min-height: 60px;
+    }
+
+#Content {
+    margin-top: 0;
+}
+
+#ContentInner {
+    width: 90%;
+}
+
+#PageFunctionsTop #PageFunctionsFeedback {
+    display: none;
+}
+
+#Page {
+    padding: 8px;
+    min-height: 240px;
+}
+
+#TrailNav {
+    display: block;
+    margin: 0 0 1.5em;
+}
+
+#PageTitle {
+    margin-top: 0;
+}
+
+#Footer {
+    display: none;
+}

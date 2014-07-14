@@ -1,0 +1,230 @@
+@import url('../../Default/global/Global.css');
+
+/* ############################################################################
+   ## 
+   ##  ThreeCols1
+   ##
+   ############################################################################ 
+    
+   | Header                               |
+   |______________________________________|
+   |          | TrailNav    PageFunctions |
+   |          |___________________________|
+   |          |               |           |
+   | Tertiary | Primary       | Secondary |
+   |          |               |           |
+   |          |               |           |
+   |          |               |           |
+   |          |_______________|___________|
+   |          | PageFunctions             |
+   |__________|___________________________|
+   |                                      |
+   | Footer                               |
+   
+   <Align>
+       <Template>
+           <AccessibilityToolbar />
+           <Header />
+           <Content>
+               <Page>
+                   <TrailNav />
+                   <PageFunctionsTop />
+                   <PageContent>
+                       <Primary />
+                       <Secondary />
+                   </PageContent>
+                   <PageFunctionsBottom />
+               </Page>
+               <Tertiary />
+           </Content>
+           <Footer />
+       </Template>
+   </Align>
+*/
+
+/* ####################################
+   Custom Design Options
+   
+   ADD RULES HERE. 
+   
+   - Note that certain rules are overridden by the fixed design elements below.
+   - DO NOT use padding, margins, borders on #Primary, #Secondary, #Tertiary,
+     in this section. See notes in the next section if it's absolutely
+     necessary to use these options on outer containers.
+   ################################# */
+
+#Page {
+    padding-bottom: 2em;
+}
+#PageInner {
+}
+
+    #Page #PageContent {
+    }
+    #Page #PageContentInner {
+    }
+    
+        #Page #PageContent #Primary {
+        }
+        #Page #PageContent #PrimaryInner {
+        }
+
+            #Page #PageContent #Primary #PageBody {
+            }
+            
+            #Page #PageContent #Primary #SubContainers {
+            }
+
+            #Page #PageContent #Primary #SubArticles {
+            }
+
+        #Page #PageContent #Secondary {
+            margin-top: 5em;
+        }
+        #Page #PageContent #SecondaryInner {
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+
+#TrailNav {
+    display: block;
+    padding: 0.75em 0;
+    border-bottom: #e0e0e0 1px solid;
+    margin-right: 72px;
+    margin-bottom: 1.5em;
+}
+* html #TrailNav {
+    /* IE6 Only */
+    width: 65%;
+}
+
+#PageBody #PageTitle {
+    margin-top: 0;
+}
+
+/* ####################################
+   Column Widths 
+   
+   DON'T ADD RULES HERE. ONLY MODIFY VALUES.
+   
+   Avoid use of padding, margins, borders on #Primary, #Secondary, #Tertiary,
+   as this will affect the column widths. Generally it's easier to put these
+   settings on the "Inner" elements (in which case, specify them in the
+   section above). However some designs require settings on the outer elements.
+   If padding, margins, borders are necessary on the outer containers, make 
+   sure that widths are re-calculated properly. You should ONLY need to modify
+   the "width: #px;" attributes in these cases. (Borders are usually set in 
+   pixel sizes and by nature, "%" or "em" widths are not compatible with the
+   approach used in these stylesheets.) Other settings (e.g. padding, margin)
+   should be equal to the full width of the column.
+   ################################# */
+
+/* Left column width */
+
+    #ContentInner {                
+        padding-left: 300px;
+    }
+    
+    #Tertiary {
+        width: 300px;               /* LC width minus #Tertiary padding/margin/border. */
+        left: -300px;
+    }
+    
+/* Right column width */
+
+    #Page #PageContent #Primary {
+        padding-right: 220px;       /* Note that the right column overlaps this padding when the content fills the screen (by using a negative margin). */
+    }
+        
+    #Page #PageContent #Secondary {
+        width: 220px;               /* RC width minus #Secondary padding/margin/border. */
+        margin-left: -220px;
+    }
+
+/* Full page width (only for fixed width designs) */
+
+    * html #Tertiary {
+        /* IE6 Only */
+        margin-left: -978px;
+    }
+
+/* Only change these where the design is fixed width AND margin/padding/borders are required on these elements. Avoid changes if possible. Widths other than 100% remove the ability for the page to easily change to fluid width. */
+
+    #Content {
+        /* width: 100%;  */               /* Specifying a width ensures consistent page layout in IE7, IE6, FF, otherwise they all treat the page width slightly differently. */
+    }
+    #ContentInner {
+        width: 652px;               /* Affected by #Template{width}. */
+    }
+    * html #ContentInner {
+        /* IE6 Only */
+        padding-left: 292px;
+        padding-right: 0;
+        width: 652px;
+    }
+
+    #Page {
+        width: 100%;                /* Specifying a width fixes float and width issues in FF and IE6 when content does not push to 100% width. */
+    }
+    
+        #Page #PageContent {
+            width: 100%;            /* Specifying a width ensures consistent layout on all pages regardless of content. */
+        }
+
+        #Page #PageContentInner {
+            width: 100%;            /* Specifying a width ensures consistent layout on all pages regardless of content. */
+        }
+
+/* ####################################
+   Fixed 3 Column Design Elements
+   
+   DON'T CHANGE.
+   
+   ################################# */
+
+#Content {
+    position: relative; 
+    float: left;
+}
+#ContentInner {
+    min-width: 1px;                 /* Without a min-width, #Tertiary jumps to the left off the screen in IE7. */
+}
+
+    #Page {
+        position: relative;
+        float: left;
+    }
+    * html #Page {
+        /* IE6 Only */
+        overflow: hidden;           /* Fixes creeping #Tertiary problem in IE6 when content is at minimum width (in fluid width pages) at the cost of removing the left/right scrollbar so right column content may become invisible on very thin screens. */
+    }
+    
+        #Page #PageContent {
+            position: relative;
+            float: left;
+        }
+        #Page #PageContentInner {
+            position: relative;
+            float: left;
+        }
+
+            #Page #PageContent #Primary {
+                position: relative;
+                float: left;
+            }
+
+            #Page #PageContent #Secondary {
+                position: relative;
+                float: right;       /* Left or right float shouldn't matter if widths are properly set, but we use right for a nicer standard layout if they're not. */
+            }
+
+    #Tertiary {
+        position: relative;
+        float: left;
+        margin-left: -100%;         /* The holy grail trick. And the cause of most of our headaches. */
+    }
+    * html #Tertiary {
+        /* IE6 Only */
+        left: 0;                    /* The holy grail hack/fix. */
+    }
+    

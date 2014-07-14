@@ -1,0 +1,717 @@
+/* ############################################################################
+   ## 
+   ##  FORM STYLES
+   ##
+   ##  NOTES
+   ##  ----------
+   ##  * The layout described in this style sheet is a two column form layout,
+   ##    with field labels on the left and fields with their other associated
+   ##    bits and pieces on the right.
+   ##  * Read the document titled "Forms HTML Markup Standards" to understand
+   ##    how to use this style sheet.
+   ##  * See DefaultPageElements.css for application button styles
+   ##  * DO NOT muck around with the structure of this file - you will only
+   ##    fall into an abyss of crazy CSS and HTML headaches! If structural 
+   ##    customisations are really necessary, put them in the section provided 
+   ##    at the end of the file.
+   ##  * RW 20090729 - This style sheet has been extended to cover metadata 
+   ##    field collections too, which aren't forms, but generally deal with 
+   ##    the same kind of data that is managed using forms and is often 
+   ##    presented the same way. Look for new classes "dataContainer" and 
+   ##    "dataFields".
+   ##
+   ######################################################################### */
+
+/* ####################################
+   General Form HTML Tags
+   ################################## */
+
+form, .form, .dataContainer {
+    position: relative;
+    float: none;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+fieldset, .fieldset {
+    display: block;
+    float: left;
+    width: 98.75%;
+    min-width: 98.75%; /* IE7 doesn't like the width property but this works and doesn't spoil anything for other browsers. */
+    padding: 0 0.62%; /* Width + Horizontal padding + Horizontal margin should equal just under 100% to make room for the border. */
+    margin: 0 0 1.5em;
+    border: #ebebeb 1px solid; 
+}
+* html fieldset, * html .fieldset {
+    /* IE6 Only */
+    float: none; /* The left float can cause all kinds of headaches at the end of a form. */
+}
+*:first-child+html fieldset, *:first-child+html .fieldset {
+    /* IE7 Only */
+    float: none; /* The left float can cause all kinds of headaches at the end of a form. */
+}
+
+    fieldset legend {
+        padding: 4px;
+        margin: 0;
+        color: #000000;
+        font-size: 125%;
+        font-weight: bold;
+    }
+    
+    .fieldset .legend {
+        display: inline-block;
+        padding: 4px;
+        margin-top: -1em; /* Works okay for font-size 75% + padding 4px + parent padding 0.062%. Adjust for other settings. */
+        background: #ffffff;
+        color: #000000;
+        font-weight: bold;
+    }
+    * html .fieldset .legend {
+        /* IE6 Only */
+        margin-top: auto; /* Otherwise IE6 cuts it off as thought the fieldset has overflow:hidden. For improvement... */
+    }
+
+    fieldset p, fieldset h1, fieldset h2, fieldset h3, fieldset h4, fieldset h5, fieldset h6,
+    .fieldset p, .fieldset h1, .fieldset h2, .fieldset h3, .fieldset h4, .fieldset h5, .fieldset h6 {
+        margin-left: 4px;
+        margin-right: 4px;
+    }
+    
+/* ####################################
+   Form & Data Fields Lists
+   ################################## */
+
+.formFields, .dataFields {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+    .formFields li, .dataFields li {
+        list-style: none;
+    }
+
+    /* Don't inherit list-style for child lists of .formFields by default, as they're probably regular content. */
+    .formFields ol, .dataFields ol {
+        list-style: decimal;
+    }
+    .formFields ul, .dataFields ul {
+        list-style: disc;
+    }
+
+/* ####################################
+   Form & Data Field Wrappers (usually inside lists)
+   ################################## */
+
+.fieldContainer, .formFields li, .dataFields li {
+    position: relative;
+    float: left; /* display:inline-block would be a better way to give the object dimension, but IE8 has problems in that case with our implementation of dynamic classes on "other" options for radio/checkbox fields */
+    clear: left;
+    width: 100%;
+    padding: 0;
+    margin: 0 0 3px;
+}
+* html .fieldContainer, * html .formFields li, * html .dataFields li {
+    /* IE6 Only */
+    /* To make IE6 apply margins, etc. properly at the end of a containing element. */
+    float: none;
+    display: inline-block;
+}
+*:first-child+html .fieldContainer, *:first-child+html .formFields li, *:first-child+html .dataFields li {
+    /* IE7 Only */
+    /* To make IE7 apply margins, etc. properly at the end of a containing element. */
+    float: none;
+    display: inline-block;
+}
+
+    /* The following wrappers should be inside a .fieldContainer wrapper if the .fieldContainer class is used. However the CSS below does not specify .fieldContainer so that the following classes can also be used when .fieldContainer is not used (e.g. in simple forms). */
+
+    .fieldTitle, .formFields label, .dataFields label {
+        position: relative;
+        float: left;
+        width: 170px;
+        padding: 4px;
+        margin-right: 4px; /* Should match negative margin on .fieldContent - See below. */
+        font-weight: bold;
+    }
+    
+    .fieldText { /* When it appears outside .fieldContent - e.g. on simple forms. */
+        position: relative;
+        float: left;
+        padding: 4px;
+    }
+
+    .fieldContent {
+        display: block;
+        position: relative;
+        float: left;
+        max-width: 580px;   /* Affected by #Template{width}. Makes sure that fields on two column forms don't expand too far and hence clear the left floated field title. */
+    }
+        
+            .fieldContent .fieldText { /* When it appears inside .fieldContent. Might need to override values from above. */
+                float: none;
+                padding: 4px 0;
+            }
+
+            .fieldControls {
+                /* It's possible that .fieldControls/.fieldData exists without a .fieldContent wrapper. */
+                float: left;
+                padding: 4px;
+                background: #f8f8f8;
+                border-left: #e0e0e0 1px solid;
+            }
+            .fieldContent .fieldControls {
+                /* When these fields ARE inside the .fieldContent wrapper. Might need to override settings from .fieldControls/.fieldData above. */
+            }
+            
+                .Theme_twocols2 .fieldControls {
+                    width: 400px;
+                }
+                    
+/* ####################################
+   Form Table
+   These table settings must be defined after the core styles. (FF is fussy with the tables.) 
+   ################################## */
+
+table.formFields, table.dataFields {
+    /* If putting settings here, remember that IE6 doesn't like element.class syntax */
+    border-collapse: separate;
+    border: 1px;
+}
+    
+    .formFields tr, .dataFields tr {
+    }
+    
+        .formFields tr th, .dataFields tr th {
+        }
+        
+        .formFields tr td, .dataFields tr td {
+        }
+
+/* ####################################
+   Field Types
+   ################################## */
+
+.textField {
+}
+
+.textareaField {
+}
+
+.numberField {
+    /* Note: Number fields are also text fields. */
+}
+
+.emailField {
+    /* Note: Email fields are also text fields. */
+}
+
+.dateField {
+    /* Note: Date fields are also text fields. */
+}
+        
+    .dateField .dateSelector {
+        display: block;
+        position: relative;
+        float: left;
+        height: 16px;
+        padding-left: 20px;
+        padding-top: 2px;
+        margin-top: 2px;
+        margin-left: 0.5em;
+        background: url('../images/icons/16x16_calendar.gif') no-repeat;
+    }
+
+.dateDropdownField {
+    /* A date selected by using three dropdowns - Day/Month/Year */
+}
+
+    .dateDropdownField fieldset {
+        clear: none;
+        width: auto;
+        min-width: 0px;
+        padding: 0;
+        margin: 0;
+        border: 0;
+    }
+
+        .dateDropdownField fieldset legend {
+            display: none; /* Current accessible browsers ignore this. */
+        }
+
+    .dateDropdownField .fieldControls {
+    }
+
+        .dateDropdownField .fieldControls label {
+            display: none;
+        }
+
+        .dateDropdownField .fieldControls select {
+        }
+
+        @media aural {
+            .dateDropdownField .fieldControls label {
+                float: left;
+            }
+
+            .dateDropdownField .fieldControls select {
+                float: left;
+            }
+        }
+
+.radioField, .checkboxField {
+}
+
+    .radioField fieldset, .checkboxField fieldset {
+        clear: none;
+        width: auto;
+        min-width: 0px;
+        padding: 0;
+        margin: 0;
+        border: 0;
+        border-left: #e0e0e0 1px solid;
+    }
+
+        .radioField fieldset legend, .checkboxField fieldset legend {
+            display: none; /* Current accessible browsers ignore this. */
+        }
+        
+    .radioField label, .checkboxField label {
+        /* Assume controls are implicitly associated with labels, i.e. inside the label tag. */
+        background: transparent;
+        margin-bottom: 0.25em;
+        padding-bottom: 1px; /* Make room for the hover border (see below) so that elements don't jump around. */
+        font-weight: normal;
+    }
+
+        .radioField label:hover, .checkboxField label:hover {
+            padding-bottom: 0;
+            border-bottom: 1px dotted;
+        }
+        
+    .radioField input, .checkboxField input {
+    }
+    
+    .radioField .horizontalOptions, .checkboxField .horizontalOptions {
+    }
+            
+        .radioField .horizontalOptions label, .checkboxField .horizontalOptions label {
+            width: auto;
+            margin-right: 1em;
+        }
+    
+    .radioField .verticalOptions, .checkboxField .verticalOptions {
+    }
+
+        .radioField .verticalOptions label, .checkboxField .verticalOptions label {
+            /* Must override settings from higher up. */
+            position: relative;
+            float: left;
+            clear: left;
+            width: auto;
+        }
+
+	        * html .radioField .verticalOptions label, * html .checkboxField .verticalOptions label {
+				/* IE6 Only */
+				width: 95%; /* Less than 100% to account for padding */
+			}
+
+	        *:first-child+html .radioField .verticalOptions label, *:first-child+html .checkboxField .verticalOptions label {
+				/* IE7 Only */
+				width: 95%; /* Less than 100% to account for padding */
+			}
+				
+    /***
+     * Radio/Checkbox Fields in tables
+     * - ASP.Net uses tables for radio and checkbox lists and explicitly (rather than implicitly) associates inputs/labels - i.e. the input tag is not wrapped by the label tag. 
+     */
+    
+    .radioField table, .checkboxField table {
+    }
+    
+        .radioField tr, .checkboxField tr {
+        }
+    
+            .radioField td, .checkboxField td {
+                padding-right: 1em;
+            }
+    
+                .radioField td label, .checkboxField td label {
+                    float: none;
+                    width: auto !important;
+                }
+        
+    /***
+     * "Other" option 
+     * - Styles for (implied) horizontalOptions are defined first in case the horizontal/vertical class doesn't exist, as the natural layout is closest to this.
+     * - .radioField, .checkboxField selectors not specified as layout is the same and therefore the CSS is simplified.
+     */
+
+    /* "Other" field, hidden with select control. */
+
+    .otherOptionSelectTextHidden { 
+        display: inline-block; 
+    }
+
+        .otherOptionSelectTextHidden .otherOptionEnable { 
+            /* This is a <label> tag */
+        }
+                            
+        .otherOptionSelectTextHidden .otherOptionText {
+            display: inline;
+        }
+        
+            .otherOptionSelectTextHidden .otherOptionText label {
+                display: none; /* Ignored by all current accessible browsers, so this is the easiest way to hide the label. Otherwise we'd have to use the code below. */
+                position: absolute; /* Takes up no space in the page. */
+                text-indent: -10000em; /* Makes the text invisible without hiding it (so accessible browsers can see it). */
+            }
+            
+            .otherOptionSelectTextHidden .otherOptionText input {
+                display: block;
+                clear: left;
+                margin-left: 1.75em;
+            }
+            
+    .verticalOptions .otherOptionSelectTextHidden {
+        display: block;
+        clear: left; /* For IE6 & IE7. FF and IE8 do it right with just display: block; */
+    }
+
+        .verticalOptions .otherOptionSelectTextHidden .otherOptionEnable {
+            /* This is a <label> tag */
+        }
+
+        .verticalOptions .otherOptionSelectTextHidden .otherOptionText {
+            display: block;
+            clear: left;
+        }
+
+            .verticalOptions .otherOptionSelectTextHidden .otherOptionText label {
+                display: none; /* Ignored by all current accessible browsers, so this is the easiest way to hide the label. Otherwise we'd have to use the code below. */
+                position: absolute; /* Takes up no space in the page. */
+                text-indent: -10000em; /* Makes the text invisible without hiding it (so accessible browsers can see it). */
+            }
+
+            .verticalOptions .otherOptionSelectTextHidden .otherOptionText input {
+                display: block;
+            }
+
+    /* "Other" field, visible with select control. */
+    
+    .otherOptionSelectTextVisible {
+        display: inline-block;
+    }
+
+        .otherOptionSelectTextVisible .otherOptionEnable { 
+            /* This is a <label> tag */
+        }
+                            
+        .otherOptionSelectTextVisible .otherOptionText {
+            display: inline;
+        }
+        
+            .otherOptionSelectTextVisible .otherOptionText label {
+                display: none; /* Ignored by all current accessible browsers, so this is the easiest way to hide the label. Otherwise we'd have to use the code below. */
+                position: absolute; /* Takes up no space in the page. */
+                text-indent: -10000em; /* Makes the text invisible without hiding it (so accessible browsers can see it). */
+            }
+            
+            .otherOptionSelectTextVisible .otherOptionText input {
+                display: block;
+                clear: left;
+                margin-left: 1.75em;
+            }
+    
+    .verticalOptions .otherOptionSelectTextVisible {
+        display: block;
+        clear: left; /* For IE6 & IE7. FF and IE8 do it right with just display: block; */
+    }
+
+        .verticalOptions .otherOptionSelectTextVisible .otherOptionEnable { 
+            /* This is a <label> tag */
+        }
+                            
+        .verticalOptions .otherOptionSelectTextVisible .otherOptionText {
+        }
+        
+            .verticalOptions .otherOptionSelectTextVisible .otherOptionText label {
+            }
+            
+            .verticalOptions .otherOptionSelectTextVisible .otherOptionText input {
+            }
+
+    /* "Other" field, text only (always visible). */
+    
+    .otherOptionTextOnly {
+        /* Always on a new line, even for horizontal options. */
+        display: block;
+        clear: left;
+        padding: 0.35em;
+    }
+
+        .otherOptionTextOnly .otherOptionText {
+        }
+        
+            .otherOptionTextOnly .otherOptionText label {
+            }
+            
+            .otherOptionTextOnly .otherOptionText input {
+                display: block;
+                clear: left;
+            }
+    
+    .verticalOptions .otherOptionTextOnly {
+    }
+
+        .verticalOptions .otherOptionTextOnly .otherOptionText {
+        }
+        
+            .verticalOptions .otherOptionTextOnly .otherOptionText label {
+            }
+            
+            .verticalOptions .otherOptionTextOnly .otherOptionText input {
+            }
+
+    /* Other option - Class used to dynamically hide the option */
+
+    .otherOptionSelectTextHidden .otherOptionHideText {
+        display: none !important;
+    }
+
+/* The hacks for singleCheckboxField below aren't pretty... Fix later! */
+
+.singleCheckboxField {
+    position: relative;
+}
+
+    .singleCheckboxField .required {
+        vertical-align: middle; /* Affects IE6 & IE7 and it doesn't hurt to explicitly state it for the other browsers. */
+    }
+
+    .singleCheckboxField label {
+        position: relative;
+        width: auto;
+        padding-left: 24px;
+        background: transparent;
+    }
+
+    .singleCheckboxField label input {
+        position: absolute;
+        width: auto;
+        margin-top: -2px;
+        margin-left: -22px;
+    }
+    
+        .singleCheckboxField label input, x:-moz-any-link {
+            /* Firefox Only */
+            margin-top: 1px;
+            margin-left: -18px;
+        }
+        *:first-child+html .singleCheckboxField label input {
+            /* IE7 Only */
+            margin-top: -3px;
+            margin-left: -22px;
+        }
+
+.dropdownField { 
+}
+    
+    /* "Other" fields. Note that certain styles are already set from the radio/checkbox field above. */
+
+    .dropdownField .otherOptionSelectTextHidden {
+        display: inline;
+    }
+
+        .dropdownField .otherOptionSelectTextHidden .otherOptionText {
+            display: inline;
+        }
+
+            .dropdownField .otherOptionSelectTextHidden .otherOptionText label {
+                width: auto;
+                background: transparent;
+            }
+
+            .dropdownField .otherOptionSelectTextHidden .otherOptionText input {
+                display: inline;
+                margin-left: auto;
+            }
+
+    .dropdownField .otherOptionSelectTextVisible {
+        display: block;
+        padding: 0.35em 0.35em 0.35em 0;
+    }
+
+        .dropdownField .otherOptionSelectTextVisible .otherOptionText {
+        }
+
+            .dropdownField .otherOptionSelectTextVisible .otherOptionText label {
+                width: auto;
+                background: transparent;
+            }
+
+            .dropdownField .otherOptionSelectTextVisible .otherOptionText input {
+                display: inline-block;
+                margin-left: auto;
+            }
+
+    
+    .dropdownField .otherOptionTextOnly {
+        display: block;
+        padding: 0.35em 0.35em 0.35em 0;
+    }
+
+        .dropdownField .otherOptionTextOnly .otherOptionText {
+        }
+
+            .dropdownField .otherOptionTextOnly .otherOptionText label {
+                width: auto;
+                background: transparent;
+            }
+
+            .dropdownField .otherOptionTextOnly .otherOptionText input {
+            }
+
+.multiselectField {
+}
+
+.matrixField {
+}
+
+    .matrixField .fieldContent table.subFields {
+        width: 100%;
+        margin-top: 0.5em;
+        border: 1px #e0e0e0 solid;
+        border-top: 0;
+    }
+    
+        .matrixField table.subFields caption {
+            display: none;
+        }
+    
+        .matrixField table.subFields tr.subFieldsTableHeader {
+        }
+
+            .matrixField table.subFields tr.subFieldsTableHeader th {
+                font-weight: normal;
+                background: #f0f0f0;
+            }
+        
+        .matrixField table.subFields tr.subFieldContainer {
+        }
+
+            .matrixField table.subFields tr.subFieldContainer th {
+                font-weight: normal;
+                background: #f8f8f8;
+                border: 1px #e0e0e0 solid;
+            }
+
+            .matrixField table.subFields tr.subFieldContainer td {
+                display: table-cell; /* This might have been set to something else due to class names for "other" options. */
+                padding: auto;
+                background: #ffffff;
+                border: 1px #e0e0e0 solid;
+            }
+
+    .matrixField .fieldContent table.horizontalOptions {
+    }
+    * html .matrixField .fieldContent table.horizontalOptions {
+        /* IE6 Only */
+        margin-top: -2.5em; /* Why is IE bumping the table down? Fix this nasty hack later. */
+    }
+    *:first-child+html .matrixField .fieldContent table.horizontalOptions {
+        /* IE7 Only */
+        margin-top: -2.5em; /* Why is IE bumping the table down? Fix this nasty hack later. */
+    }
+
+            .matrixField .fieldContent table.horizontalOptions tr {
+            }
+            
+                .matrixField .fieldContent table.horizontalOptions tr.checkboxField td ,
+                .matrixField .fieldContent table.horizontalOptions tr.radioField td {
+                }
+                                
+                    .matrixField .fieldContent table.horizontalOptions tr.checkboxField td input,
+                    .matrixField .fieldContent table.horizontalOptions tr.radioField td input {
+                        float: left;
+                    }
+                    
+                    .matrixField .fieldContent table.horizontalOptions tr.checkboxField td label,
+                    .matrixField .fieldContent table.horizontalOptions tr.radioField td label {
+                        float: left;
+                    }
+                
+    .matrixField table.matrixLabelsInHeader {
+    }
+    
+        .matrixField table.matrixLabelsInHeader tr.subFieldsTableHeader {
+        }
+    
+            .matrixField table.matrixLabelsInHeader tr.subFieldsTableHeader th {
+                border: #e0e0e0 1px solid;
+            }
+        
+        .matrixField table.matrixLabelsInHeader tr.subFieldContainer {
+        }
+        
+                .matrixField table.matrixLabelsInHeader tr.subFieldContainer td {
+                }
+
+                    .matrixField table.matrixLabelsInHeader tr.subFieldContainer td label {
+                        display: none;
+                    }
+                        
+                        .matrixField table.matrixLabelsInHeader tr.subFieldContainer td.otherOptionSelectTextVisible input {
+                            display: inline-block;
+                            float: none;
+                            clear: none;
+                            margin-left: 5px;
+                        }
+
+    .matrixField table.matrixLabelsInCells {
+    }
+
+        .matrixField table.matrixLabelsInCells tr.subFieldsTableHeader {
+            display: none;
+        }
+
+/* ####################################
+   Special elements on a form
+   ################################## */
+
+.readOnly {
+    color: #909090;
+    background-color: #f0f0f0;
+}
+
+.address2 {
+}
+
+    .address2 label {
+        background: transparent;
+    }
+
+/* ####################################
+   Structural Customisations
+   ################################## */
+
+/* Put your own structural customisations here (if necessary) rather than changing the design of this file. */
+
+.noField {
+    display: none;
+}
+
+/* ####################################
+   The global ASP.Net form
+   - DON'T CHANGE
+   - Override some values to stop the form styles breaking other parts of the site design.
+   ################################## */
+
+#aspnetForm {
+    position: relative;
+    float: none;
+    margin: auto;
+    padding: 0;
+}

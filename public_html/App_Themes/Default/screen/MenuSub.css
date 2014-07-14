@@ -1,0 +1,202 @@
+/* ############################################################################
+   ## 
+   ##  SUB MENU
+   ##
+   ######################################################################### */
+
+#SubMenu {
+    width: 95%;
+}
+#SubMenuInner {
+    margin: 0 10px 0 70px;
+}
+
+/* ####################################
+   Anchors (Links) - Standard Styles
+   - Can be overridden by manipulating different list levels further down in the CSS
+   ################################## */
+
+#SubMenu ul li a {
+    /* All anchor tags */
+    display: block; /* Note: display:block makes the links larger and easier to access for mobility challenged users. */
+    width: 100%; /* Careful with this if padding/margins/borders are added. Otherwise required for IE6 to fill the block with the link. */
+}
+
+#SubMenu ul li a:link {
+    /* All anchor tags - Link */
+    text-decoration: none;
+}
+
+#SubMenu ul li a:visited {
+    /* All anchor tags - Visited */
+    text-decoration: none;
+}
+
+#SubMenu ul li a:hover {
+    /* All anchor tags - Hover */
+    text-decoration: underline;
+}
+
+#SubMenu ul li a:active {
+    /* All anchor tags - Active */
+}
+
+/* ####################################
+   Section Label
+   ################################## */
+
+#SubMenu #SubMenuSection {
+    margin-bottom: 0.5em;
+    padding: 6px 10px;
+    font-size: 150%;
+    font-weight: normal;
+    text-transform: lowercase;
+    background: #303030;
+}
+
+    #SubMenu #SubMenuSection a {
+        display: block; /* Note: display:block makes the links larger and easier to access for mobility challenged users. */
+        width: 100%; /* Careful with this if padding/margins/borders are added. Otherwise required for IE6 to fill the block with the link. */
+        color: #ffffff;
+    }
+
+    #SubMenu #SubMenuSection .section {
+    }
+
+    #SubMenu #SubMenuSection .sectionSelected {
+    }
+
+/* ####################################
+   List Layout
+   ################################## */
+
+/***
+ * Lists
+ */
+
+#SubMenu ul {
+    /* The sub menu list */
+    margin: 0 0 3em;
+    padding: 0;
+    
+    list-style: none;
+}
+
+#SubMenu ul ul {
+    /* Second level list */
+    margin-bottom: 0.25em;
+}
+
+/***
+ * List items 
+ */
+
+#SubMenu ul li {
+    /* All list items */
+    margin: 0;
+    padding: 6px 10px;
+    font-size: 125%;
+    font-weight: bold;
+}
+
+    #SubMenu ul ul li {
+        /* Second level list items */
+        margin: 0 0 0 12px;
+        padding: 5px 0 0 0;
+        
+        font-size: 75%;
+        text-transform: none;
+        
+        border: 0;
+    }
+    
+        #SubMenu ul ul ul li {
+            /* Third level list items */
+            margin: 0 0 0 12px;
+            padding: 5px 0 0 0;
+            
+            font-size: 100%;
+            
+            border: 0;
+        }
+        
+            #SubMenu ul ul ul ul li {
+                /* Fourth level list items */
+                margin: 0 0 0 12px;
+                padding: 5px 0 0 0;
+                
+                font-size: 100%;
+                
+                border: 0;
+            }
+
+/* ####################################
+   Current Branch & Current Pages
+   ################################## */
+
+#SubMenu ul li.currentBranch {
+    /* Any parent list item on the currently open branch */
+}
+
+#SubMenu ul li.currentPage {
+    /* The list item containing the current page link */
+}
+
+    #SubMenu ul li ul li.currentPage {
+        /* The list item containing the current page link at the second level and below */
+    }
+
+    #SubMenu ul li.currentPage a {
+        /* The current page link */
+        color: #909090;
+    }
+
+        #SubMenu ul li.currentPage li {
+            /* Children of the current page list item */
+        }
+        
+            #SubMenu ul li.currentPage li a:link {
+                font-weight: normal;
+                text-decoration: none;
+            }
+            
+            #SubMenu ul li.currentPage li a:visited {
+                font-weight: normal;
+                text-decoration: none;
+            }
+            
+            #SubMenu ul li.currentPage li a:active {
+                text-decoration: underline;
+            }
+            
+            #SubMenu ul li.currentPage li a:hover {
+                text-decoration: underline;
+            }
+
+/* ####################################
+   List Items by Level/Position
+   ################################## */
+
+/* Examples... */
+
+#SubMenu .level1 .item1 {
+    /* First level, first item */
+}
+
+#SubMenu .item1 {
+    /* All list items in the first position of any list in the sub menu */ 
+}
+
+/* ####################################
+   Named Items
+   - Individual named menu items can be styled here
+   ################################## */
+
+/* Examples... */
+
+#subMenu_exampletextid {
+}
+
+    #subMenu_exampletextid a {
+        /* Links underneath exampletextid */
+    }
