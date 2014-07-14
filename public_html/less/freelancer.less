@@ -1,6 +1,7 @@
 @import "variables.less";
-
-
+#logo-responsive {
+    display: none;
+}        
 /* for 760px or less */
 @media screen and (max-width: 980px) {
 
@@ -9,6 +10,17 @@
 /* for 760px or less */
 @media screen and (max-width : 760px){
              
+        #Logo {
+            display:none;
+        }
+        #logo-responsive {
+            display: block;
+            max-width: 100%;
+            height: auto;
+            margin: 0 auto;
+            padding-top:40px;
+        }
+
         ul.level1 {  
                         height: auto; }
         ul.level1 > li {  
@@ -30,6 +42,9 @@
                 padding-right:0px;
             }
         }
+        #Header #Logo {
+            
+        }
         #FeatureContentInner {
             width:100%;
         }
@@ -41,6 +56,10 @@
                 text-align:center;
                 #Panel3{
                     width:100%;
+                    float:center;
+                    #Panel3Inner{
+                        text-indent:0;
+                    }
                 }
                 #Panel4 {
                     width:100%;
@@ -125,4 +144,4 @@
         #MainMenuInner{
             text-align:center;
         }
-}
+}        
